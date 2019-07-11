@@ -1,12 +1,12 @@
 import React, {Component} from "react";
-import InputContainer from "../container/InputContainer";
-import TodoItemListContainer from "./TodoItemListContainer";
-import CompletedFilter, {completedFilterDictionary} from "../presentational/CompletedFilter";
-import Summary from "../presentational/Summary";
+import Input from "./Input";
+import TodoList from "./TodoList";
+import Filter, {completedFilterDictionary} from "./Filter";
+import Summary from "./Summary";
 
 let counter = 0;
 
-class MainContainer extends Component {
+class App extends Component {
     constructor() {
         super();
 
@@ -34,7 +34,7 @@ class MainContainer extends Component {
     };
 
 
-    editTodoItem = (id, text) => {
+    editTodoItem = id => text => {
         const index = this.getTodoItemIndexById(id);
         let todoItems = [...this.state.todoItems];
         todoItems[index].text = text;
@@ -64,14 +64,14 @@ class MainContainer extends Component {
 
         return (
             <div>
-                <InputContainer
+                <Input
                     addItemHandler={this.addTodoItem}
                     filterItemsHandler={this.setTextFilter}
                     clearTextFilter={() => this.setTextFilter('')}
                 />
 
-                <CompletedFilter setCompletedFilter={this.setCompletedFilter}/>
-                <TodoItemListContainer
+                <Filter setCompletedFilter={this.setCompletedFilter}/>
+                <TodoList
                     completedFilter={this.state.completedFilter}
                     textFilter={this.state.textFilter}
                     todoItems={this.state.todoItems}
@@ -89,4 +89,4 @@ class MainContainer extends Component {
     }
 }
 
-export default MainContainer;
+export default App;

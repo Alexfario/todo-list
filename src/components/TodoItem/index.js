@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TodoItem from "../presentational/TodoItem";
+import TodoItem from "./TodoItem";
 import PropTypes from "prop-types";
 
 

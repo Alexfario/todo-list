@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import MainContainer from './components/container/MainContainer';
+import App from './components/App';
 
 
-ReactDOM.render(<MainContainer />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

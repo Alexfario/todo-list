@@ -8,7 +8,7 @@ const completedFilterDictionary = {
 }
 
 
-const CompletedFilter = ({setCompletedFilter}) => (
+const Filter = ({setCompletedFilter}) => (
     <>
         <button onClick={() => setCompletedFilter(completedFilterDictionary.showAll)}>All</button>
         <button onClick={() => setCompletedFilter(completedFilterDictionary.showCompleted)}>Completed</button>
@@ -17,9 +17,9 @@ const CompletedFilter = ({setCompletedFilter}) => (
 );
 
 
-CompletedFilter.propTypes = {
+Filter.propTypes = {
     setCompletedFilter: PropTypes.func.isRequired,
 };
 
-export default CompletedFilter;
+export default Filter;
 export {completedFilterDictionary};

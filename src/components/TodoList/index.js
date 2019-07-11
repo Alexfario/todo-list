@@ -1,15 +1,18 @@
-import React, {Component} from "react";
-import {completedFilterDictionary} from "../presentational/CompletedFilter";
-import TodoItemContainer from "./TodoItemContainer";
+import React from "react";
+import {completedFilterDictionary} from "../Filter/index";
+import TodoItem from "../TodoItem";
 import PropTypes from "prop-types";
 
 
-const TodoItemListContainer = ({
-                                   textFilter,
-                                   todoItems,
-                                   completedFilter,
-                                   ...rest
-                               }) => {
+const Index = ({
+                   textFilter,
+                   todoItems,
+                   completedFilter,
+                   editTodoItemHandler,
+                   toggleCompletedHandler,
+                   removeTodoItemHandler,
+                   ...rest
+               }) => {
 
     const isFilterMatched = (todoItemText) => todoItemText.indexOf(textFilter) > -1;
 
@@ -23,9 +26,12 @@ const TodoItemListContainer = ({
                 )
         ).map(
             (todoItem) =>
-                <TodoItemContainer
+                <TodoItem
                     key={todoItem.id}
                     todoItem={todoItem}
+                    editTodoItemHandler={editTodoItemHandler(todoItem.id)}
+                    toggleCompletedHandler={() => {toggleCompletedHandler(todoItem.id);}}
+                    removeTodoItemHandler={() => {removeTodoItemHandler(todoItem.id);}}
                     {...rest}
                 />
         )
@@ -34,7 +40,7 @@ const TodoItemListContainer = ({
 }
 
 
-TodoItemListContainer.propTypes = {
+Index.propTypes = {
     textFilter: PropTypes.string.isRequired,
     todoItems: PropTypes.array.isRequired,
     completedFilter: PropTypes.any,
@@ -45,4 +51,4 @@ TodoItemListContainer.propTypes = {
 };
 
 
-export default TodoItemListContainer;
+export default Index;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Input from './../presentational/Input';
+import Input from './Input';
 import PropTypes from "prop-types";
 
 const InputContainer = ({addItemHandler, filterItemsHandler, clearTextFilter}) => {
@@ -10,8 +10,9 @@ const InputContainer = ({addItemHandler, filterItemsHandler, clearTextFilter}) =
     };
 
     const handleChange = (event) => {
-        setText(event.target.value);
-        filterItemsHandler(text);
+        const newText = event.target.value;
+        setText(newText);
+        filterItemsHandler(newText);
     };
 
     const handleKeyPress = (event) => {
